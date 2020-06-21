@@ -1,9 +1,9 @@
 import {COLORS} from "../const.js";
 
 const DescriptionItems = [
-  `Изучить теорию`,
-  `Сделать домашку`,
-  `Пройти интенсив на соточку`,
+  `JavaScript theory`,
+  `English vocabulary`,
+  `Duolinguo with Cris`,
 ];
 
 const DefaultRepeatingDays = {
@@ -28,16 +28,17 @@ const getRandomIntegerNumber = (min, max) => {
 
 const getRandomDate = () => {
   const targetDate = new Date();
+  // random sign on (--- -1 ---- 0 ----- +1---)
   const sign = Math.random() > 0.5 ? 1 : -1;
-
+  // random overdue or task ahead
   const diffValue = sign * getRandomIntegerNumber(0, 8);
-  console.log(diffValue);
   targetDate.setDate(targetDate.getDate() + diffValue);
 
   return targetDate;
 };
 
 const generateRepeatingDays = () => {
+  // copy defaul object with days of week. Mark several
   return Object.assign({}, DefaultRepeatingDays, {
     "mo": Math.random() > 0.5,
     "tu": Math.random() > 0.5,
